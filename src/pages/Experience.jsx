@@ -6,107 +6,134 @@ const experiences = [
   {
     role: "Senior Full-Stack Developer",
     company: "Mindeed Technologies",
-    desc:
-      "Built fintech-grade systems including EOD automation, reconciliation engines, and high-volume transaction processing.",
+    desc: "Built fintech-grade systems including EOD automation, reconciliation engines, and high-volume transaction processing.",
     tech: ["React", ".NET Core", "SQL Server", "Python"],
   },
   {
     role: "Product Developer",
     company: "JIVI Enterprise",
-    desc:
-      "Designed workforce management modules with SFTP integrations, payroll logic, and enterprise workflows.",
+    desc: "Designed workforce management modules with SFTP integrations, payroll logic, and enterprise workflows.",
     tech: ["ASP.NET MVC", "Azure", "MS SQL"],
   },
   {
     role: "Software Developer",
     company: "Websyntactic Solution",
-    desc:
-      "Worked on CRM systems, e-commerce platforms, and responsive web applications.",
+    desc: "Worked on CRM systems, e-commerce platforms, and responsive web applications.",
     tech: ["JavaScript", "ASP.NET", "SQL"],
   },
 ];
-
+const skills = [
+  "React",
+  "Next.js",
+  "Tailwind",
+  "Node.js",
+  ".NET",
+  "SQL Server",
+  "MongoDB",
+  "Python",
+  "Automation",
+  "Web Scraping",
+  "Git",
+  "REST APIs",
+  "UI Design",
+];
 export default function Experience() {
   return (
     <section className="w-full min-h-screen px-6 py-24 bg-white">
-      <div className="max-w-7xl mx-auto">
+  {/* Experience */}
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="text-4xl font-bold text-center mb-14 text-gray-900"
+  >
+    Experience
+  </motion.h1>
 
-        {/* Heading */}
-        <h1 className="text-5xl font-extrabold text-gray-900 mb-14">
-          Experience
-        </h1>
+  <motion.div
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    variants={{
+      hidden: {},
+      show: { transition: { staggerChildren: 0.12 } },
+    }}
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+  >
+    {experiences.map((exp, index) => (
+      <motion.div
+        key={index}
+        variants={{
+          hidden: { opacity: 0, y: 25 },
+          show: { opacity: 1, y: 0 },
+        }}
+        whileHover={{ y: -6 }}
+        transition={{ duration: 0.3 }}
+        className="group border border-gray-200 rounded-xl p-6 bg-white shadow-sm hover:shadow-md transition"
+      >
+        <h2 className="text-xl font-semibold text-gray-900">
+          {exp.role}
+        </h2>
+        <p className="text-gray-500">{exp.company}</p>
 
-        {/* Horizontal Cards */}
-        <div className="flex gap-6 overflow-x-auto pb-6">
-          {experiences.map((exp, i) => (
-            <motion.div
+        <p className="mt-3 text-gray-700 leading-relaxed">
+          {exp.desc}
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {exp.tech.map((tech, i) => (
+            <span
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="
-                group relative min-w-[320px] max-w-[320px]
-                rounded-3xl border border-gray-200
-                bg-white
-                hover:shadow-2xl
-                transition-all duration-500
-                overflow-hidden
-              "
+              className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition"
             >
-              {/* Header (Always Visible) */}
-              <div className="p-6">
-                <p className="text-sm uppercase tracking-widest text-gray-500">
-                  {exp.company}
-                </p>
-                <h3 className="text-xl font-bold text-gray-900 mt-2">
-                  {exp.role}
-                </h3>
-              </div>
-
-              {/* Hover Content */}
-              <div
-                className="
-                  px-6 pb-6
-                  max-h-0 opacity-0
-                  group-hover:max-h-[400px]
-                  group-hover:opacity-100
-                  transition-all duration-500 ease-out
-                "
-              >
-                <p className="text-gray-600 leading-relaxed mt-4">
-                  {exp.desc}
-                </p>
-
-                {/* Tech */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {exp.tech.map((t, idx) => (
-                    <span
-                      key={idx}
-                      className="
-                        text-xs px-3 py-1 rounded-full
-                        bg-gray-900 text-white
-                      "
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Subtle Gradient Accent */}
-              <div
-                className="
-                  absolute inset-0 rounded-3xl
-                  bg-gradient-to-br from-indigo-500/10 via-transparent to-rose-500/10
-                  opacity-0 group-hover:opacity-100
-                  transition
-                "
-              />
-            </motion.div>
+              {tech}
+            </span>
           ))}
         </div>
-      </div>
-    </section>
+
+        <div className="mt-5 h-[2px] w-0 group-hover:w-full bg-gray-300 transition-all duration-300" />
+      </motion.div>
+    ))}
+  </motion.div>
+
+  {/* Skills */}
+  <motion.h2
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="text-3xl font-bold text-center mt-28 mb-12 text-gray-900"
+  >
+    Skills
+  </motion.h2>
+
+  <motion.div
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    variants={{
+      hidden: {},
+      show: { transition: { staggerChildren: 0.08 } },
+    }}
+    className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto"
+  >
+    {skills.map((skill, index) => (
+      <motion.div
+        key={index}
+        variants={{
+          hidden: { opacity: 0, scale: 0.9 },
+          show: { opacity: 1, scale: 1 },
+        }}
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.25 }}
+        className="px-5 py-2 rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm hover:shadow-md hover:border-gray-300 transition cursor-default"
+      >
+        {skill}
+      </motion.div>
+    ))}
+  </motion.div>
+</section>
+
   );
 }
